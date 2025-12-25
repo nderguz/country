@@ -37,18 +37,18 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void editCountry(CountryDto country) {
-        var foundEntity = countryRepository.findByCode(country.getCode());
-        if(foundEntity.isPresent()){
+    public void editCountry(String code, CountryDto country) {
+        var foundEntity = countryRepository.findByCode(code);
+        if (foundEntity.isPresent()) {
             foundEntity.get().setName(country.getName());
             countryRepository.save(foundEntity.get());
-        }else{
+        } else {
             throw new EntityNotFoundException("Country with code %s not found".formatted(country.getCode()));
         }
     }
 
     private void checkIfCountryAlreadyExists(CountryDto country) {
-        if (country.getId() != null){
+        if (country.getId() != null) {
             throw new IllegalArgumentException("Country ID should be null");
         }
 

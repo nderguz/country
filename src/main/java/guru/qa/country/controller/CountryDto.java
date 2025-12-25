@@ -17,7 +17,7 @@ public class CountryDto {
     private String name;
     private String code;
 
-    public static CountryDto fromEntity(CountryEntity entity){
+    public static CountryDto fromEntity(CountryEntity entity) {
         return CountryDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())

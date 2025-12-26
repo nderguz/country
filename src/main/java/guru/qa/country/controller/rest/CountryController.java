@@ -1,5 +1,6 @@
-package guru.qa.country.controller;
+package guru.qa.country.controller.rest;
 
+import guru.qa.country.controller.CountryDto;
 import guru.qa.country.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

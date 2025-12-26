@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -37,11 +38,12 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void editCountry(String code, CountryDto country) {
+    public UUID editCountry(String code, CountryDto country) {
         var foundEntity = countryRepository.findByCode(code);
         if (foundEntity.isPresent()) {
             foundEntity.get().setName(country.getName());
             countryRepository.save(foundEntity.get());
+            return foundEntity.get().getId();
         } else {
             throw new EntityNotFoundException("Country with code %s not found".formatted(country.getCode()));
         }

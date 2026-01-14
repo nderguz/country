@@ -18,14 +18,14 @@ public class CountryServiceImpl implements CountryService {
     private final CountryRepository countryRepository;
 
     @Override
-    public List<CountryDto> getAllCountries() {
+    public List<CountryDto> all() {
         return countryRepository.findAll().stream()
                 .map(e -> new CountryDto(e.getId(), e.getName(), e.getCode()))
                 .toList();
     }
 
     @Override
-    public CountryDto addCountry(CountryDto country) {
+    public CountryDto add(CountryDto country) {
 
         checkIfCountryAlreadyExists(country);
 
@@ -38,7 +38,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public UUID editCountry(String code, CountryDto country) {
+    public UUID update(String code, CountryDto country) {
         var foundEntity = countryRepository.findByCode(code);
         if (foundEntity.isPresent()) {
             foundEntity.get().setName(country.getName());

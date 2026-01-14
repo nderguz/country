@@ -18,18 +18,18 @@ public class CountryController {
 
     @GetMapping
     public ResponseEntity<List<CountryDto>> getAllCountries() {
-        return ResponseEntity.ok(countryService.getAllCountries());
+        return ResponseEntity.ok(countryService.all());
     }
 
     @PostMapping
     public ResponseEntity<CountryDto> addCountry(@RequestBody CountryDto country) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(countryService.addCountry(country));
+        return ResponseEntity.status(HttpStatus.CREATED).body(countryService.add(country));
     }
 
     @PatchMapping("/{code}")
     public ResponseEntity<Void> editCountry(@PathVariable("code") String code,
                                             @RequestBody CountryDto country) {
-        countryService.editCountry(code, country);
+        countryService.update(code, country);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

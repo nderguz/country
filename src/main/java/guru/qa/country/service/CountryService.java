@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CountryService {
-    List<CountryDto> getAllCountries();
-    CountryDto addCountry(CountryDto country);
-    UUID editCountry(String code, CountryDto country);
+    List<CountryDto> all();
+    CountryDto add(CountryDto country);
+    UUID update(String code, CountryDto country);
 }

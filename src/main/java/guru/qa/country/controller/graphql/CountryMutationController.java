@@ -17,7 +17,7 @@ public class CountryMutationController {
 
     @MutationMapping
     public CountryDto addCountry(@Argument String name, @Argument String code) {
-        return countryService.addCountry(CountryDto.builder()
+        return countryService.add(CountryDto.builder()
                 .name(name)
                 .code(code)
                 .build());
@@ -25,6 +25,6 @@ public class CountryMutationController {
 
     @MutationMapping
     public UUID editCountry(@Argument CountryDto country) {
-        return countryService.editCountry(country.getCode(), country);
+        return countryService.update(country.getCode(), country);
     }
 }

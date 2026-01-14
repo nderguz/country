@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package quru.qa.country;
+
+option java_multiple_files = true;
+option java_package = "quru.qa.country";
+option java_outer_classname = "CountryProto";
+
+service CountryService {
+  rpc all(google.protobuf.Empty) returns (CountryResponse) {}
+  rpc add(NewCountry) returns (Country) {}
+  rpc update(Country) returns (Country) {}
+  rpc updateStream(stream NewCountry) returns (Count) {}
+}
+
+message Count {
+  int32 count = 1;
+}
+
+message CountryResponse {
+  repeated Country country = 1;
+}
+
+message NewCountry {
+  string code = 1;
+  string name = 2;
+}
+
+message Country {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+}

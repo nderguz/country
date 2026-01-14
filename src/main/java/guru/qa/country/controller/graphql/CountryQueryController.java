@@ -16,6 +16,6 @@ public class CountryQueryController {
 
     @QueryMapping
     public List<CountryDto> getAllCountries() {
-        return countryService.getAllCountries();
+        return countryService.all();
     }
 }
